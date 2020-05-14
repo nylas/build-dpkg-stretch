@@ -18,7 +18,7 @@ jobs:
     steps:
       - uses: actions/checkout@v2
 
-      - uses: singingwolfboy/build-dpkg-stretch@master
+      - uses: singingwolfboy/build-dpkg-stretch@v1
         id: build
         with:
           args: --unsigned-source --unsigned-changes
@@ -69,7 +69,7 @@ jobs:
     steps:
       - uses: actions/checkout@v2
 
-      - uses: singingwolfboy/build-dpkg-stretch@master
+      - uses: singingwolfboy/build-dpkg-stretch@v1
         id: build
         with:
           args: --unsigned-source --unsigned-changes
