@@ -6,7 +6,7 @@ COPY entrypoint.sh /entrypoint.sh
 
 # Installs the `dpkg-buildpackage` command
 RUN apt-get update
-RUN apt-get install build-essential debhelper devscripts perl python3 python3-virtualenv -y
+RUN apt-get install build-essential debhelper devscripts perl python3 python3-virtualenv python-virtualenv -y
 
 # Install `dh-virtualenv` 1.2
 RUN echo 'deb http://http.us.debian.org/debian bullseye main' >> /etc/apt/sources.list
