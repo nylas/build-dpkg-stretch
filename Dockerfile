@@ -11,6 +11,7 @@ RUN apt-get install build-essential debhelper devscripts perl python3 python3-vi
 # Install `dh-virtualenv` 1.2
 RUN echo 'deb http://http.us.debian.org/debian bullseye main' >> /etc/apt/sources.list
 RUN apt-get update
+RUN apt-get install -o APT::Immediate-Configure=0 libc6-dev libcrypt-dev -y
 RUN apt-get download dh-virtualenv
 RUN dpkg -i --force-all --ignore-depends=perl,python3,virtualenv,sphinx-rtd-theme-common dh-virtualenv_1.2.1-1_all.deb
 
