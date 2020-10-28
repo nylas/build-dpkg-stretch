@@ -6,14 +6,11 @@ COPY entrypoint.sh /entrypoint.sh
 
 # Installs the `dpkg-buildpackage` command
 RUN apt-get update
-RUN apt-get install build-essential debhelper devscripts perl python3 python3-virtualenv python-virtualenv -y
+RUN apt-get install -y build-essential debhelper devscripts -y
 
 # Install `dh-virtualenv` 1.2
-RUN echo 'deb http://http.us.debian.org/debian bullseye main' >> /etc/apt/sources.list
-RUN apt-get update
-RUN apt-get install -o APT::Immediate-Configure=0 libc6-dev libcrypt-dev -y
-RUN apt-get download dh-virtualenv
-RUN dpkg -i --force-all --ignore-depends=perl,python3,virtualenv,sphinx-rtd-theme-common dh-virtualenv_1.2.1-1_all.deb
+RUN curl --output /tmp/dh-virtualenv.pkg https://download.nylas.com/gha-deps/dh-virtualenv_1.2.1-1~stretch_all.deb
+RUN apt-get install -y /tmp/dh-virtualenv.pkg
 
 # Code file to execute when the docker container starts up (`entrypoint.sh`)
 ENTRYPOINT ["/entrypoint.sh"]
