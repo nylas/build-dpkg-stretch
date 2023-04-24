@@ -4,6 +4,9 @@ LABEL maintainer="David Baumgold <david@davidbaumgold.com>"
 # Copies your code file from your action repository to the filesystem path `/` of the container
 COPY entrypoint.sh /entrypoint.sh
 
+# Stretch has been moved to archive.debian.org: https://lists.debian.org/debian-devel-announce/2023/03/msg00006.html
+RUN echo "deb http://archive.debian.org/debian stretch main" > /etc/apt/sources.list
+
 # Install the `dpkg-buildpackage` command
 RUN apt-get update
 RUN apt-get install --yes build-essential debhelper devscripts
