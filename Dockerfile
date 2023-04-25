@@ -8,8 +8,7 @@ COPY entrypoint.sh /entrypoint.sh
 RUN echo "deb http://archive.debian.org/debian stretch main" > /etc/apt/sources.list
 
 # Install the `dpkg-buildpackage` command
-RUN apt-get update
-RUN apt-get install --yes build-essential debhelper devscripts
+RUN apt-get update && apt-get install --yes apt-utils build-essential debhelper devscripts curl
 
 # Install `dh-virtualenv` 1.2
 RUN curl --output /tmp/dh-virtualenv.deb https://download.nylas.com/gha-deps/dh-virtualenv_1.2.1-1~stretch_all.deb
